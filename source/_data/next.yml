@@ -7,7 +7,7 @@
 # If true, will fully override default configuration by options from `_data/next.yml` (override). Only for NexT settings.
 # And if true, all config from default NexT `_config.yml` have to be copied into `next.yml`. Use if you know what you are doing.
 # Useful if you want to comment some options from NexT `_config.yml` by `next.yml` without editing default config.
-override: false
+override: true
 
 # Console reminder if new version released.
 reminder: false
@@ -29,9 +29,9 @@ custom_file_path:
   #postBodyEnd: source/_data/post-body-end.swig
   #footer: source/_data/footer.swig
   #bodyEnd: source/_data/body-end.swig
-  #variable: source/_data/variables.styl
+  variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: source/_data/styles.styl
 
 
 # ---------------------------------------------------------------
@@ -42,10 +42,10 @@ custom_file_path:
 favicon:
   small: /images/favicon_s.png
   medium: /images/favicon.ico
-  apple_touch_icon: /images/apple-touch-icon-next.png
-  safari_pinned_tab: /images/logo.svg
-  #android_manifest: /images/manifest.json
-  #ms_browserconfig: /images/browserconfig.xml
+  apple_touch_icon: /images/favicon.ico
+  safari_pinned_tab: /images/favicon.ico
+  android_manifest: /images/favicon.ico
+  ms_browserconfig: /images/favicon.ico
 
 # Show multilingual switcher in footer.
 language_switcher: false
@@ -67,7 +67,7 @@ footer:
   copyright:
 
   # Powered by Hexo & NexT
-  powered: true
+  powered: false
 
   # Beian ICP and gongan information for Chinese users. See: https://beian.miit.gov.cn, http://www.beian.gov.cn
   beian:
@@ -117,13 +117,14 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  about: /about/ || fa fa-user
-  tags: /tags/ || fa fa-tags
-  categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
+  categories: /categories/ || fa fa-th
+  tags: /tags/ || fa fa-tags
+  about: /about/ || fa fa-user
+  links: /links/ || fa fa-link
   #schedule: /schedule/ || fa fa-calendar
   #sitemap: /sitemap.xml || fa fa-sitemap
-  #commonweal: /404.html || fa fa-heartbeat
+  #commonweal: /404.html 
 
 # Enable / Disable menu icons / item badges.
 menu_settings:
@@ -178,7 +179,7 @@ site_state: true
 # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
 social:
   GitHub: https://github.com/nnccy || fab fa-github
-  E-Mail: ncyrain1205@gmail.com || fa fa-envelope
+  E-Mail: mailto:ncyrain1205@gmail.com || fa fa-envelope
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -198,10 +199,10 @@ links_settings:
   icon: fa fa-link
   title: Friend Links
   # Available values: block | inline
-  layout: inline
+  #layout: inline
 
 links:
-  ai-3d: https://www.baidu.com/
+
   #Title: http://yoursite.com
 
 # Table of Contents in the Sidebar
@@ -209,11 +210,11 @@ links:
 toc:
   enable: true
   # Automatically add list number to toc.
-  number: true
+  number: false
   # If true, all words will placed on next lines if header width longer then sidebar width.
-  wrap: false
+  wrap: true
   # If true, all level of TOC in a post will be displayed, rather than the activated part of it.
-  expand_all: false
+  expand_all: true
   # Maximum heading depth of generated toc.
   max_depth: 6
 
@@ -262,13 +263,13 @@ tag_icon: true
 # Front-matter variable (unsupport animation).
 reward_settings:
   # If true, reward will be displayed in every article by default.
-  enable: false
-  animation: false
-  #comment: Donate comment here.
+  enable: true
+  animation: true
+  comment: 如果这篇文章对你有帮助，不妨
 
 reward:
-  #wechatpay: /images/wechatpay.png
-  #alipay: /images/alipay.png
+  wechatpay: /images/wechatpay.jpg
+  alipay: /images/alipay.jpg
   #paypal: /images/paypal.png
   #bitcoin: /images/bitcoin.png
 
@@ -482,6 +483,20 @@ baidu_site_verification:
 baidu_push: false
 
 
+# 友情链接
+defaultlinks:
+  - nickname: Heson     # 昵称
+    avatar: https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png    # 头像地址
+    site: https://www.heson10.com #友链地址
+    info: 人生在勤，不索何获
+ 
+ 
+friendslinks:
+  - nickname: Heson     # 昵称
+    avatar: https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png    # 头像地址
+    site: https://www.heson10.com #友链地址
+    info: 人生在勤，不索何获
+
 # ---------------------------------------------------------------
 # Third Party Plugins & Services Settings
 # See: https://theme-next.org/docs/third-party-services/
@@ -491,6 +506,8 @@ baidu_push: false
 #   - jsDelivr (cdn.jsdelivr.net), works everywhere even in China
 #   - CDNJS (cdnjs.cloudflare.com), provided by cloudflare
 # ---------------------------------------------------------------
+
+
 
 # Math Formulas Render Support
 math:
@@ -607,21 +624,22 @@ changyan:
   appid:
   appkey:
   #post_meta_order: 0
-
+passage_end_tag:
+  enable: true
 # Valine
 # For more information: https://valine.js.org, https://github.com/xCss/Valine
 valine:
-  enable: false
-  appid: # Your leancloud application appid
-  appkey: # Your leancloud application appkey
+  enable: true
+  appid: EGebjGy3Y7vrPAyHdtY2bYdG-gzGzoHsz
+  appkey: 0WWztSryAzbSNJeFqcay0A4y
   notify: false # Mail notifier
   verify: false # Verification code
-  placeholder: Just go go # Comment box placeholder
+  placeholder: Add your comment # Comment box placeholder
   avatar: mm # Gravatar style
   guest_info: nick,mail,link # Custom comment header
   pageSize: 10 # Pagination size
   language: # Language, available values: en, zh-cn
-  visitor: false # Article reading statistic
+  visitor: true # Article reading statistic
   comment_count: true # If false, comment count will only be displayed in post page, not in home page
   recordIP: false # Whether to record the commenter IP
   serverURLs: # When the custom domain name is enabled, fill it in here (it will be detected automatically by default, no need to fill in)
@@ -712,7 +730,7 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # Get more information on http://ibruce.info/2015/04/04/busuanzi
 busuanzi_count:
-  enable: false
+  enable: true
   total_visitors: true
   total_visitors_icon: fa fa-user
   total_views: true
@@ -818,22 +836,37 @@ mermaid:
 
 
 
-needmoreshare2:
+
+
+# NeedMoreShare2
+# Dependencies: https://github.com/theme-next/theme-next-needmoreshare2
+# For more information: https://github.com/revir/need-more-share2
+# iconStyle: default | box
+# boxForm: horizontal | vertical
+# position: top / middle / bottom + Left / Center / Right
+# networks:
+# Weibo | Wechat | Douban | QQZone | Twitter | Facebook | Linkedin | Mailto | Reddit | Delicious | StumbleUpon | Pinterest
+# GooglePlus | Tumblr | GoogleBookmarks | Newsvine | Evernote | Friendfeed | Vkontakte | Odnoklassniki | Mailru
+needmoreshare:
   enable: true
+  cdn:
+    js: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js
+    css: //cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css
   postbottom:
     enable: true
     options:
-      iconStyle: default
+      iconStyle: box
       boxForm: horizontal
-      position: bottomCenter
-      networks: Weibo,Wechat,Douban,QQZone
+      position: bottom + Left
+      networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook
   float:
     enable: false
     options:
-      iconStyle: default
+      iconStyle: box
       boxForm: horizontal
       position: middleRight
-      networks: Weibo,Wechat,Douban,QQZone
+      networks: Weibo,Wechat,QQZone
+
 
 # ---------------------------------------------------------------
 # Animation Settings

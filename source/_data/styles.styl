@@ -1,0 +1,76 @@
+// 文章阴影
+.post {
+   margin-top: 50px;
+   margin-bottom: 50px;
+   padding: 25px;
+   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+}
+  //去掉顶部黑线：
+.headband {display:none;}
+// 修改选中字符的颜色
+/* webkit, opera, IE9 */
+::selection { 
+    background: #99CCFF;
+    color: #000000; 
+}
+
+.footer{
+	color: #fffff0;
+}
+/* firefox */
+::-moz-selection { 
+    background: #99CCFF;
+    color: #000000;    
+}
+
+// 代码块选中颜色
+.highlight *::selection {
+    background: #99CCFF;
+}
+// 标题栏背景图片
+.site-brand-container { 
+  background-image: url(/images/log-small.png);
+  background-size: 100% 100%;
+  opacity: 0.9;
+}
+
+.tag-cloud a {
+    box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
+    padding: 2px 10px;
+    margin: 8px;
+    background: rgba(193,66,92,0);
+    border-bottom: none;
+    border-radius: 20px;
+}
+
+body {
+    background:url(/assets/background.png);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position:50% 50%;
+    
+    
+}
+//博客内容透明化
+//文章内容的透明度设置
+.content-wrap {
+  opacity: 0.97;
+}
+
+//侧边框的透明度设置
+.sidebar {
+  opacity: 0.97;
+}
+
+//菜单栏的透明度设置
+.header-inner {
+  background: rgba(255,255,255,0.9);
+}
+
+//搜索框（local-search）的透明度设置
+.popup {
+  opacity: 0.97;
+}
+//首页顶部留白
+.container{margin-top:20px;} 

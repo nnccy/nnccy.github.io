@@ -1,13 +1,13 @@
 ---
 name: 简体中文
 title:
-  archive: 归档
+  archive: 目录
   category: 分类
   tag: 标签
   schedule: 日程表
 menu:
   home: 首页
-  archives: 归档
+  archives: 目录
   categories: 分类
   tags: 标签
   about: 关于
@@ -15,6 +15,7 @@ menu:
   schedule: 日程表
   sitemap: 站点地图
   commonweal: 公益 404
+  links: 友链
 sidebar:
   overview: 站点概览
   toc: 文章目录

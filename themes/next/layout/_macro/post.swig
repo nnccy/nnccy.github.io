@@ -210,7 +210,11 @@
     {#####################}
     {### END POST BODY ###}
     {#####################}
-
+		<div>
+	    {% if not is_index %}
+	      {% include 'passage-end-tag.swig' %}
+	    {% endif %}
+	  </div>
     {%- if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) %}
       {{ partial('_partials/post/post-related.swig') }}
     {%- endif %}
@@ -229,13 +233,13 @@
       {%- if theme.follow_me %}
         {{ partial('_partials/post/post-followme.swig', {}, {cache: theme.cache.enable}) }}
       {%- endif %}
-
+	
       <footer class="post-footer">
         {%- if post.tags and post.tags.length %}
           {%- if theme.tag_icon %}
             {%- set tag_indicate = '<i class="fa fa-tag"></i>' %}
           {% else %}
-            {%- set tag_indicate = '#' %}
+            {%- set tag_indicate = '<i class="fa fa-tag"></i>' %}
           {%- endif %}
           <div class="post-tags">
             {%- for tag in post.tags.toArray() %}
