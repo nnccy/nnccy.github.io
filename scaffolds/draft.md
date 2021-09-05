@@ -9,6 +9,7 @@ tags:
 - PS3
 - Games
 description:
+copyright: true
 ---
 
 <!--more-->

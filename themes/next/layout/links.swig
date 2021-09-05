@@ -79,14 +79,14 @@
         </style>
         <div class="links-content">
 
-             <div class="no-icon note warning"><div class="link-info">👨‍🎓 跟着大佬走，成为小大佬</div></div>
+             <div class="no-icon note warning"><div class="link-info">👨‍🎓 收藏的网站和大佬</div></div>
             <div class="link-navigation">
                     {% for link in theme.defaultlinks %}
 
                     <div class="card">
                         <img class="ava nofancybox" src="{{ link.avatar }}"/>
                         <div class="card-header">
-                        <div><a href="{{ link.site }}" target="_blank"> {{ link.nickname }}</a> <a href="{{ link.site }}"><span class="focus-links"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;关注</span></a></div>
+                        <div><a href="{{ link.site }}" target="_blank"> {{ link.nickname }}</a> </div>
                         <div class="info">{{ link.info }}</div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
 
             </div>
 
-            <div class="no-icon note primary"><div class="link-info">🍭 五湖四海的朋友们</div></div>
+            <div class="no-icon note primary"><div class="link-info">🍭 牛掰的朋友们</div></div>
 
              <div class="link-navigation">
                     {% for link in theme.friendslinks %}
@@ -103,7 +103,7 @@
                     <div class="card">
                         <img class="ava nofancybox" src="{{ link.avatar }}"/>
                         <div class="card-header">
-                        <div><a href="{{ link.site }}" target="_blank"> {{ link.nickname }}</a> <a href="{{ link.site }}"><span class="focus-links"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;关注</span></a></div>
+                        <div><a href="{{ link.site }}" target="_blank"> {{ link.nickname }}</a> </div>
                         <div class="info">{{ link.info }}</div>
                         </div>
                     </div>

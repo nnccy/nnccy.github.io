@@ -180,6 +180,7 @@ site_state: true
 social:
   GitHub: https://github.com/nnccy || fab fa-github
   E-Mail: mailto:ncyrain1205@gmail.com || fa fa-envelope
+  CSDN: https://blog.csdn.net/qq_39209397 || fa fa-crosshairs
   #Weibo: https://weibo.com/yourname || fab fa-weibo
   #Google: https://plus.google.com/yourname || fab fa-google
   #Twitter: https://twitter.com/yourname || fab fa-twitter
@@ -382,7 +383,7 @@ reading_progress:
 
 # Bookmark Support
 bookmark:
-  enable: true
+  enable: false
   # Customize the color of the bookmark.
   color: "#222"
   # If auto, save the reading progress when closing the page or clicking the bookmark-icon.
@@ -483,19 +484,6 @@ baidu_site_verification:
 baidu_push: false
 
 
-# 友情链接
-defaultlinks:
-  - nickname: Heson     # 昵称
-    avatar: https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png    # 头像地址
-    site: https://www.heson10.com #友链地址
-    info: 人生在勤，不索何获
- 
- 
-friendslinks:
-  - nickname: Heson     # 昵称
-    avatar: https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png    # 头像地址
-    site: https://www.heson10.com #友链地址
-    info: 人生在勤，不索何获
 
 # ---------------------------------------------------------------
 # Third Party Plugins & Services Settings
@@ -632,10 +620,10 @@ valine:
   enable: true
   appid: EGebjGy3Y7vrPAyHdtY2bYdG-gzGzoHsz
   appkey: 0WWztSryAzbSNJeFqcay0A4y
-  notify: false # Mail notifier
+  notify: true # Mail notifier
   verify: false # Verification code
-  placeholder: Add your comment # Comment box placeholder
-  avatar: mm # Gravatar style
+  placeholder: 建议在上方留下昵称和邮箱等信息,以便收到回复和通知 # Comment box placeholder
+  avatar: mp # Gravatar style
   guest_info: nick,mail,link # Custom comment header
   pageSize: 10 # Pagination size
   language: # Language, available values: en, zh-cn
@@ -1042,6 +1030,21 @@ vendors:
   # Internal version: 1.0.0
   # canvas_ribbon: //cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js
   canvas_ribbon:
+
+# 友情链接
+defaultlinks:
+  - nickname: 廖雪峰的官方网站     # 昵称
+    avatar: https://tva2.sinaimg.cn/crop.0.1.635.635.50/62d8efadgw1ej30downrsj20hs0hq0ws.jpg?KID=imgbed,tva&Expires=1630844507&ssig=9KTp1OY1HL   # 头像地址
+    site: https://www.liaoxuefeng.com/ #友链地址
+    info: 一个教程网站
+ 
+ 
+friendslinks:
+  - nickname: Heson     # 昵称
+    avatar: https://cdn.jsdelivr.net/gh/heson525/pic@master/pic/avatar03.png    # 头像地址
+    site: https://www.heson10.com #友链地址
+    info: 人生在勤，不索何获
+
 
 # Assets
 css: css
