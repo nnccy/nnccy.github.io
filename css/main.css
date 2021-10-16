@@ -1194,7 +1194,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #886ee5;
+  background: #ffff4b;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2821,7 +2821,6 @@ ul.breadcrumb li + li:last-child {
 .site-brand-container {
   background-image: url("/images/log-small.png");
   background-size: 100% 100%;
-  opacity: 0.9;
 }
 .tag-cloud a {
   box-shadow: 0 1px 3px #6f42c1, 0 1px 2px #d9534f;
@@ -2830,25 +2829,4 @@ ul.breadcrumb li + li:last-child {
   background: rgba(193,66,92,0);
   border-bottom: none;
   border-radius: 20px;
-}
-body {
-  background: url("/assets/background.png");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: 50% 50%;
-}
-.content-wrap {
-  opacity: 0.97;
-}
-.sidebar {
-  opacity: 0.97;
-}
-.header-inner {
-  background: rgba(255,255,255,0.9);
-}
-.popup {
-  opacity: 0.97;
-}
-.container {
-  margin-top: 10px;
 }
