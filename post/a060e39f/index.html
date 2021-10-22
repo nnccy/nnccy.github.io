@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_s.png">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+  <link rel="manifest" href="/images/favicon.ico">
+  <meta name="msapplication-config" content="/images/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ma Shan Zheng:300,300italic,400,400italic,700,700italic|Noto Sans Simplified Chinese:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.rainncy.top","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="java常用类学习总结，参考教程Java基础视频-【深入浅出精华版视频】-刘意-经典27天完整版-黑马程序员">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习之常用类总结">
+<meta property="og:url" content="http://www.rainncy.top/post/a060e39f/index.html">
+<meta property="og:site_name" content="小宁同学的博客">
+<meta property="og:description" content="java常用类学习总结，参考教程Java基础视频-【深入浅出精华版视频】-刘意-经典27天完整版-黑马程序员">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://www.rainncy.top/post/a060e39f/image-20211017220102951.png">
+<meta property="article:published_time" content="2021-10-22T02:33:36.000Z">
+<meta property="article:modified_time" content="2021-10-22T02:34:18.115Z">
+<meta property="article:author" content="Rain_ncy">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://www.rainncy.top/post/a060e39f/image-20211017220102951.png">
+
+<link rel="canonical" href="http://www.rainncy.top/post/a060e39f/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style>
+  <title>Java学习之常用类总结 | 小宁同学的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小宁同学的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">想躺平的打工人</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>目录</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-link fa-fw"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://www.rainncy.top/post/a060e39f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/mytouxiang.jpg">
+      <meta itemprop="name" content="Rain_ncy">
+      <meta itemprop="description" content="分享技术，记录生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小宁同学的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java学习之常用类总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-22 10:33:36 / 修改时间：10:34:18" itemprop="dateCreated datePublished" datetime="2021-10-22T10:33:36+08:00">2021-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/post/a060e39f/" class="post-meta-item leancloud_visitors" data-flag-title="Java学习之常用类总结" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/post/a060e39f/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/post/a060e39f/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>java常用类学习总结，参考教程<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bt411S7fr?share_source=copy_web">Java基础视频-【深入浅出精华版视频】-刘意-经典27天完整版-黑马程序员</a></p>
+<span id="more"></span>
+
+<h1 id="java之常用类"><a href="#java之常用类" class="headerlink" title="java之常用类"></a>java之常用类</h1><h2 id="一、Object类"><a href="#一、Object类" class="headerlink" title="一、Object类"></a>一、Object类</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><ol>
+<li><p>Object是类层次结构的根类，所有的类都直接或者间接的继承自Object类。</p>
+</li>
+<li><p>Object类的构造方法有一个，并且是无参构造</p>
+</li>
+<li><p>这其实就是理解当时我们说过，子类构造方法默认访问父类的构造是无参构造</p>
+</li>
+</ol>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>toString()<br>返回对象的字符串表示，默认是由类的全路径+‘@’+哈希值的十六进制表示。一般子类会重写此方法，重写后，一般输出</li>
+<li>equals()<br>比较两个对象是否相同。默认情况下，比较的是地址值是否相同。<br>而比较地址值是没有意义的，所以，一般子类也会重写该方法。</li>
+<li>hashCode() 返回对象的哈希值。不是实际地址值，可以理解为地址值。可重写。</li>
+<li>getClass() 返回对象的字节码文件对象。</li>
+<li>finalize() 用于垃圾回收，可重写，因为垃圾回收的时间不确定，所以此方法调用的时间不确定。</li>
+<li>clone() 可以实现对象的克隆，包括成员变量的数据复制，但是它和两个引用指向同一个对象是有区别的。被clone的类要加上Cloneable接口</li>
+</ol>
+<h2 id="二、Scanner类"><a href="#二、Scanner类" class="headerlink" title="二、Scanner类"></a>二、Scanner类</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>用于收集键盘录入的类。</p>
+<h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><p>system.in</p>
+<p>是标准的输入流，对应键盘输入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Scanner</span><span class="params">(InputStream source)</span></span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function">InputStream is </span>= System.in;</span><br><span class="line">Scanner(InputStream is)</span><br><span class="line">  <span class="comment">//常用形式</span></span><br><span class="line">  Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用方法-1"><a href="#常用方法-1" class="headerlink" title="常用方法"></a>常用方法</h3><ol>
+<li>public int nextInt()</li>
+<li>public String nextLine()</li>
+</ol>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>同一个Scanner对象，先获取数值，再获取字符串会出现一个小问题。（输入数值会自动把\r\n截掉，后面获取的字符串是\r\n</p>
+<p>解决方案：</p>
+<ol>
+<li>重新定义一个Scanner对象</li>
+<li>把所有的数据都用字符串获取，然后再进行相应的转换</li>
+</ol>
+<h2 id="三、String类"><a href="#三、String类" class="headerlink" title="三、String类"></a>三、String类</h2><h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>字符串是由多个字符组成的一串数据(字符序列)</p>
+<p>字符串可以看成是字符数组</p>
+<p>字符串一旦被赋值，就不能改变。<br>    注意：这里指的是字符串的内容不能改变，而不是引用不能改变。<br>字面值作为字符串对象和通过构造方法创建对象的不同<br>    String s = new String(“hello”);和String s = “hello”的区别?</p>
+<p><img data-src="image-20211017220102951.png" alt="image-20211017220102951"></p>
+<h3 id="构造方法-1"><a href="#构造方法-1" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>public String()  空构造</li>
+<li>public String(byte[] bytes)  把字节数组转换为字符串</li>
+<li>public String(byte[] bytes,int offset,int length)  把字节数组的一部分转化为字符串</li>
+<li>public String(char[] value) 把字符数组转化为字符串</li>
+<li>public String(char[] value,int offset,int count) 把字符数组的一部分转化为字符串</li>
+<li>public String(String original) 把字符串常量转化为自渡船</li>
+</ul>
+<h3 id="常用方法-2"><a href="#常用方法-2" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="判断功能"><a href="#判断功能" class="headerlink" title="判断功能"></a>判断功能</h4><ul>
+<li>boolean equals(Object obj) 比较字符串内容是否相同，区分大小写</li>
+<li>boolean equalsIgnoreCase(String str) 比较字符串内容是否相同，不区分大小写</li>
+<li>boolean contains(String str) 判断大字符串中手否包括小字符串</li>
+<li>boolean startsWith(String str) 判断字符串是否以某个指定的字符串开头 </li>
+<li>boolean endsWith(String str)  判断字符串是否以某个指定的字符串结尾</li>
+<li>boolean isEmpty() 判断字符串是否为空</li>
+</ul>
+<h4 id="获取功能"><a href="#获取功能" class="headerlink" title="获取功能"></a>获取功能</h4><ul>
+<li>int length()  获取字符串的长度</li>
+<li>char charAt(int index)  获取索引位置的字符</li>
+<li>int indexOf(int ch)  返回指定字符在此字符串中第一次出现的索引</li>
+<li>int indexOf(String str)  返回指定字符串在此字符串中第一次出现处的索引。</li>
+<li>int indexOf(int ch,int fromIndex) 返回指定字符在此字符串中从指定位置后第一次出现处的索引。</li>
+<li>int indexOf(String str,int fromIndex) 返回指定字符串在此字符串中从指定位置后第一次出现处的索引。</li>
+<li>String substring(int start) 从指定位置开始截取字符串,默认到末尾。</li>
+<li>String substring(int start,int end) 从指定位置开始到指定位置结束截取字符串。</li>
+</ul>
+<h4 id="转换功能"><a href="#转换功能" class="headerlink" title="转换功能"></a>转换功能</h4><ul>
+<li>byte[] getBytes() 把字符串转换为字节数组。</li>
+<li>char[] toCharArray() 把字符串转换为字符数组。</li>
+<li>static String valueOf(char[] chs) 把字符数组转成字符串。</li>
+<li>static String valueOf(int i) 把int类型的数据转成字符串。</li>
+<li>String toLowerCase() 把字符串转成小写。</li>
+<li>String toUpperCase() 把字符串转成大写。</li>
+<li>String concat(String str) 把字符串拼接。</li>
+</ul>
+<h3 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a>其他功能</h3><ul>
+<li>替换功能 <pre><code>String replace(char old,char new)  替换字符串中的字符
+String replace(String old,String new) 替换字符串中的子字符串
+</code></pre>
+</li>
+<li>去空格功能<pre><code>String trim()  去掉字符串前后的空格
+</code></pre>
+</li>
+<li>按字典比较功能<pre><code>int compareTo(String str)
+int compareToIgnoreCase(String str)  不考虑大小写
+</code></pre>
+</li>
+</ul>
+<h2 id="四、StringBuffer类"><a href="#四、StringBuffer类" class="headerlink" title="四、StringBuffer类"></a>四、StringBuffer类</h2><h3 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h3><p>线程安全，用字符串做拼接，比较耗时并且也耗内存，而这种拼接操作又是比较常见的，为了解决这个问题，Java就提供了一个字符串缓冲区类。StringBuffer供我们使用。</p>
+<p>StringBuffer和String前者长度和内容可变，后者不可变。如果使用前者做字符串的拼接，不会浪费太多的资源。</p>
+<p>StringBuffer：同步的，数据安全，效率低。<br>StringBuilder：不同步的，数据不安全，效率高。</p>
+<h3 id="构造方法-2"><a href="#构造方法-2" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li>StringBuffer()  构造一个其中不带字符的字符串缓冲区，其初始容量为 16 个字符。</li>
+<li>StringBuffer(int size)  构造一个不带字符，但具有指定初始容量的字符串缓冲区。</li>
+<li>StringBuffer(String str)  构造一个字符串缓冲区，并将其内容初始化为指定的字符串内容。</li>
+</ul>
+<h3 id="常用方法-3"><a href="#常用方法-3" class="headerlink" title="常用方法"></a>常用方法</h3><h4 id="添加功能"><a href="#添加功能" class="headerlink" title="添加功能"></a>添加功能</h4><ul>
+<li>public StringBuffer append(String str):可以把任意类型数据添加到字符串缓冲区里面,并返回字符串缓冲区本身</li>
+<li>public StringBuffer insert(int offset,String str):在指定位置把任意类型的数据插入到字符串缓冲区里面,并返回字符串缓冲区本身</li>
+</ul>
+<h4 id="删除功能"><a href="#删除功能" class="headerlink" title="删除功能"></a>删除功能</h4><ul>
+<li>public StringBuffer deleteCharAt(int index):删除指定位置的字符，并返回本身</li>
+<li>public StringBuffer delete(int start,int end):删除从指定位置开始指定位置结束的内容，并返回本身</li>
+</ul>
+<h4 id="替换功能"><a href="#替换功能" class="headerlink" title="替换功能"></a>替换功能</h4><ul>
+<li>public StringBuffer replace(int start,int end,String str):从start开始到end用str替换</li>
+</ul>
+<h4 id="反转功能"><a href="#反转功能" class="headerlink" title="反转功能"></a>反转功能</h4><ul>
+<li>public StringBuffer reverse()</li>
+</ul>
+<h4 id="截取功能"><a href="#截取功能" class="headerlink" title="截取功能"></a>截取功能</h4><p>注意返回值类型不再是StringBuffer本身了</p>
+<ul>
+<li>public String substring(int start)</li>
+<li>public String substring(int start,int end)</li>
+</ul>
+<h2 id="五、Arrays工具类"><a href="#五、Arrays工具类" class="headerlink" title="五、Arrays工具类"></a>五、Arrays工具类</h2><h3 id="介绍-4"><a href="#介绍-4" class="headerlink" title="介绍"></a>介绍</h3><p>是针对数组进行操作的工具类。包括排序和查找等功能。</p>
+<h3 id="常用方法-4"><a href="#常用方法-4" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public static String toString(int[] a)  把数组转成字符串</li>
+<li>public static void sort(int[] a)  排序</li>
+<li>public static int binarySearch(int[] a,int key)  二分查找，查找前必须先排序</li>
+</ul>
+<h2 id="六、Interger类"><a href="#六、Interger类" class="headerlink" title="六、Interger类"></a>六、Interger类</h2><h3 id="介绍-5"><a href="#介绍-5" class="headerlink" title="介绍"></a>介绍</h3><p>为了让基本类型的数据进行更多的操作，Java就为每种基本类型提供了对应的包装类类型<br>    byte         Byte<br>    short        Short<br>    int            Integer<br>    long        Long<br>    float        Float<br>    double        Double<br>    char        Character<br>    boolean        Boolean</p>
+<h3 id="构造方法-3"><a href="#构造方法-3" class="headerlink" title="构造方法"></a>构造方法</h3><p>将字符串或int类型转化为Interger</p>
+<ul>
+<li>Integer i = new Integer(100);</li>
+<li>Integer i = new Integer(“100”);</li>
+</ul>
+<h3 id="常用方法-5"><a href="#常用方法-5" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public int intValue()  Interger转int</li>
+<li>public String toString()  Interger转String</li>
+<li>public static int parseInt(String s)  String转int</li>
+<li>public static String toBinaryString(int i)  int转二进制字符串</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="自动装箱和自动拆箱"><a href="#自动装箱和自动拆箱" class="headerlink" title="自动装箱和自动拆箱"></a>自动装箱和自动拆箱</h4><ul>
+<li><p>自动装箱：把基本类型转换为包装类类型</p>
+<p>Integer ii = 100;</p>
+</li>
+<li><p>自动拆箱：把包装类类型转换为基本类型</p>
+<p>ii += 200;</p>
+</li>
+</ul>
+<h3 id="缓冲池"><a href="#缓冲池" class="headerlink" title="缓冲池"></a>缓冲池</h3><p>Integer的数据直接赋值，如果在-128到127之间，会直接从缓冲池里获取数据</p>
+<h2 id="七、Character类"><a href="#七、Character类" class="headerlink" title="七、Character类"></a>七、Character类</h2><p>Character 类在对象中包装一个基本类型 char 的值，此外，该类提供了几种方法，以确定字符的类别（小写字母，数字，等等），并将字符从大写转换成小写，反之亦然</p>
+<h4 id="构造方法-4"><a href="#构造方法-4" class="headerlink" title="构造方法"></a>构造方法</h4><p>Character ch = new Character(‘a’);</p>
+<h4 id="常用方法-6"><a href="#常用方法-6" class="headerlink" title="常用方法"></a>常用方法</h4><ul>
+<li>public static boolean isUpperCase(char ch):判断给定的字符是否是大写字符</li>
+<li>public static boolean isLowerCase(char ch):判断给定的字符是否是小写字符</li>
+<li>public static boolean isDigit(char ch):判断给定的字符是否是数字字符</li>
+<li>public static char toUpperCase(char ch):把给定的字符转换为大写字符</li>
+<li>public static char toLowerCase(char ch):把给定的字符转换为小写字符</li>
+</ul>
+<h2 id="八、Math类"><a href="#八、Math类" class="headerlink" title="八、Math类"></a>八、Math类</h2><h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><ul>
+<li>public static final double PI</li>
+<li>public static final double E</li>
+</ul>
+<h3 id="常用方法-7"><a href="#常用方法-7" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public static int abs(int a)：绝对值</li>
+<li>public static double ceil(double a):向上取整</li>
+<li>public static double floor(double a):向下取整</li>
+<li>public static int max(int a,int b):最大值 (min自学)</li>
+<li>public static double pow(double a,double b):a的b次幂</li>
+<li>public static double random():随机数 [0.0,1.0)</li>
+<li>public static int round(float a) 四舍五入(参数为double的自学)</li>
+<li><pre><code>   public static double sqrt(double a):正平方根
+</code></pre>
+</li>
+</ul>
+<h2 id="九、System类"><a href="#九、System类" class="headerlink" title="九、System类"></a>九、System类</h2><h3 id="介绍-6"><a href="#介绍-6" class="headerlink" title="介绍"></a>介绍</h3><p>System类包含一些有用的类字段和方法。它不能被实例化。 在 <code>System</code>  类提供的设施中，有标准输入、标准输出和错误输出流；对外部定义的属性和环境变量的访问；加载文件和库的方法；还有快速复制数组的一部分的实用方法。 </p>
+<h3 id="常用方法-8"><a href="#常用方法-8" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li><pre><code>    public static void gc()：运行垃圾回收器。 
+</code></pre>
+</li>
+<li><pre><code>    public static void exit(int status) 终止当前正在运行的 Java 虚拟机。参数用作状态码；根据惯例，非 0 的状态码表示异常终止。 
+</code></pre>
+</li>
+<li><pre><code>    public static long currentTimeMillis() 返回以毫秒为单位的当前时间，统计程序运行时长
+</code></pre>
+</li>
+<li><pre><code>    public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length) 从指定源数组中复制一个数组，复制从指定的位置开始，到目标数组的指定位置结束。
+</code></pre>
+</li>
+</ul>
+<h2 id="十、BigInteger类"><a href="#十、BigInteger类" class="headerlink" title="十、BigInteger类"></a>十、BigInteger类</h2><h3 id="介绍-7"><a href="#介绍-7" class="headerlink" title="介绍"></a>介绍</h3><p>可以让超过Integer范围内的数据进行运算</p>
+<h3 id="构造方法-5"><a href="#构造方法-5" class="headerlink" title="构造方法"></a>构造方法</h3><p>BigInteger(String val) </p>
+<h3 id="常用方法-9"><a href="#常用方法-9" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public BigInteger add(BigInteger val):加</li>
+<li>public BigInteger subtract(BigInteger val):减</li>
+<li>public BigInteger multiply(BigInteger val):乘</li>
+<li>public BigInteger divide(BigInteger val):除</li>
+<li>public BigInteger[] divideAndRemainder(BigInteger val):返回商和余数的数组</li>
+</ul>
+<h2 id="十一、BigDecimal类"><a href="#十一、BigDecimal类" class="headerlink" title="十一、BigDecimal类"></a>十一、BigDecimal类</h2><h3 id="介绍-8"><a href="#介绍-8" class="headerlink" title="介绍"></a>介绍</h3><p>浮点数据做运算，会丢失精度。所以，针对浮点数据的操作建议采用BigDecimal。(金融相关的项目)</p>
+<h3 id="构造方法-6"><a href="#构造方法-6" class="headerlink" title="构造方法"></a>构造方法</h3><p>public BigDecimal(String val)   只建议参数为字符串</p>
+<h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><ul>
+<li>public BigDecimal add(BigDecimal augend) 加</li>
+<li>public BigDecimal subtract(BigDecimal subtrahend) 减</li>
+<li>public BigDecimal multiply(BigDecimal multiplicand) 乘</li>
+<li>public BigDecimal divide(BigDecimal divisor) 除</li>
+<li>public BigDecimal divide(BigDecimal divisor,int scale,int roundingMode):商，几位小数，如何舍取</li>
+</ul>
+<h2 id="十二、Date-DateFormat类"><a href="#十二、Date-DateFormat类" class="headerlink" title="十二、Date/DateFormat类"></a>十二、Date/DateFormat类</h2><h3 id="介绍-9"><a href="#介绍-9" class="headerlink" title="介绍"></a>介绍</h3><p>Date是日期类，可以精确到毫秒。</p>
+<h3 id="构造方法-7"><a href="#构造方法-7" class="headerlink" title="构造方法"></a>构造方法</h3><ul>
+<li><pre><code>    Date():根据当前的默认毫秒值创建日期对象
+</code></pre>
+</li>
+<li><pre><code>    Date(long date)：根据给定的毫秒值创建日期对象
+</code></pre>
+</li>
+</ul>
+<h3 id="常用方法-10"><a href="#常用方法-10" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>getTime()  从Date得到一个毫秒值</li>
+<li>setTime(long time)  把一个毫秒值转换为Date</li>
+</ul>
+<h2 id="十三、DateFormat-SimpleDateFormat类"><a href="#十三、DateFormat-SimpleDateFormat类" class="headerlink" title="十三、DateFormat/SimpleDateFormat类"></a>十三、DateFormat/SimpleDateFormat类</h2><h3 id="介绍-10"><a href="#介绍-10" class="headerlink" title="介绍"></a>介绍</h3><p>DateFormat针对日期进行格式化和针对字符串进行解析的类，但是是抽象类，所以使用其子类SimpleDateFormat,可以自己写工具类</p>
+<h3 id="构造方法-8"><a href="#构造方法-8" class="headerlink" title="构造方法"></a>构造方法</h3><p>SimpleDateFormat():默认模式</p>
+<ul>
+<li><pre><code>    SimpleDateFormat(String pattern):给定的模式
+</code></pre>
+</li>
+<li><pre><code>    年 y
+</code></pre>
+</li>
+<li><pre><code>    月 M    
+</code></pre>
+</li>
+<li><pre><code>    日 d
+</code></pre>
+</li>
+<li><pre><code>    时 H
+</code></pre>
+</li>
+<li><pre><code>    分 m
+</code></pre>
+</li>
+<li><pre><code>    秒 s
+</code></pre>
+</li>
+</ul>
+<p>例如：</p>
+<p>yyyy-MM-dd HH:mm:ss</p>
+<h3 id="常用方法-11"><a href="#常用方法-11" class="headerlink" title="常用方法"></a>常用方法</h3><p>public final String format(Date date)  Date转String（格式化）</p>
+<p>public Date parse(String source)  String转Date（格式化）</p>
+<h2 id="十四、Calendar类"><a href="#十四、Calendar类" class="headerlink" title="十四、Calendar类"></a>十四、Calendar类</h2><h3 id="介绍-11"><a href="#介绍-11" class="headerlink" title="介绍"></a>介绍</h3><p>日历类，封装了所有的日历字段值，通过统一的方法根据传入不同的日历字段可以获取值。</p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>本质返回的是子类对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Calendar rightNow = Calendar.getInstance(); <span class="comment">// 子类对象	</span></span><br><span class="line"><span class="comment">// 获取年</span></span><br><span class="line"><span class="keyword">int</span> year = rightNow.get(Calendar.YEAR);</span><br><span class="line"><span class="comment">// 获取月</span></span><br><span class="line"><span class="keyword">int</span> month = rightNow.get(Calendar.MONTH);</span><br><span class="line"><span class="comment">// 获取日</span></span><br><span class="line"><span class="keyword">int</span> date = rightNow.get(Calendar.DATE);</span><br></pre></td></tr></table></figure>
+
+<h3 id="常用方法-12"><a href="#常用方法-12" class="headerlink" title="常用方法"></a>常用方法</h3><ul>
+<li>public void add(int field,int amount):根据给定的日历字段和对应的时间，来对当前的日历进行操作。</li>
+</ul>
+<ul>
+<li>public final void set(int year,int month,int date):设置当前日历的年月日</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+		<div>
+	    
+	      
+<div>
+    
+        <div style="text-align:center;color: rgba(234,16,61,.569);font-size: 18px;margin-top: 20px;" class="tag-end">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div><div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
+
+
+	    
+	  </div>
+	 <div>
+      
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/a060e39f/">Java学习之常用类总结</a></p>
+  <p><span>文章作者:</span>Rainncy</p>
+  <p><span>原始链接:</span><a href="/post/a060e39f/" title="Java学习之常用类总结">http://www.rainncy.top/post/a060e39f/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.rainncy.top/post/a060e39f/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+    });
+    });  
+</script>
+
+      
+	</div><div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+        <div class="reward-container">
+  <div>如果这篇文章对你有帮助，不妨</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.jpg" alt="Rain_ncy 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Rain_ncy 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+	
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"><i class="fa fa-tag"></i> 后端</a>
+              <a href="/tags/java/" rel="tag"><i class="fa fa-tag"></i> java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/post/c62e31f8/" rel="prev" title="Java学习之集合总结">
+      <i class="fa fa-chevron-left"></i> Java学习之集合总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java%E4%B9%8B%E5%B8%B8%E7%94%A8%E7%B1%BB"><span class="nav-text">java之常用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81Object%E7%B1%BB"><span class="nav-text">一、Object类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Scanner%E7%B1%BB"><span class="nav-text">二、Scanner类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-1"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-1"><span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-text">问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81String%E7%B1%BB"><span class="nav-text">三、String类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-1"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-2"><span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E5%8A%9F%E8%83%BD"><span class="nav-text">判断功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8A%9F%E8%83%BD"><span class="nav-text">获取功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2%E5%8A%9F%E8%83%BD"><span class="nav-text">转换功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E5%8A%9F%E8%83%BD"><span class="nav-text">其他功能</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81StringBuffer%E7%B1%BB"><span class="nav-text">四、StringBuffer类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-3"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-2"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-3"><span class="nav-text">常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E5%8A%9F%E8%83%BD"><span class="nav-text">添加功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%8A%9F%E8%83%BD"><span class="nav-text">删除功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9B%BF%E6%8D%A2%E5%8A%9F%E8%83%BD"><span class="nav-text">替换功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%8D%E8%BD%AC%E5%8A%9F%E8%83%BD"><span class="nav-text">反转功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%AA%E5%8F%96%E5%8A%9F%E8%83%BD"><span class="nav-text">截取功能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81Arrays%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="nav-text">五、Arrays工具类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-4"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-4"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81Interger%E7%B1%BB"><span class="nav-text">六、Interger类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-5"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-3"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-5"><span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E8%A3%85%E7%AE%B1%E5%92%8C%E8%87%AA%E5%8A%A8%E6%8B%86%E7%AE%B1"><span class="nav-text">自动装箱和自动拆箱</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%86%B2%E6%B1%A0"><span class="nav-text">缓冲池</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81Character%E7%B1%BB"><span class="nav-text">七、Character类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-4"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-6"><span class="nav-text">常用方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81Math%E7%B1%BB"><span class="nav-text">八、Math类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-7"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81System%E7%B1%BB"><span class="nav-text">九、System类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-6"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-8"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81BigInteger%E7%B1%BB"><span class="nav-text">十、BigInteger类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-7"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-5"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-9"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81BigDecimal%E7%B1%BB"><span class="nav-text">十一、BigDecimal类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-8"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-6"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="nav-text">常用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81Date-DateFormat%E7%B1%BB"><span class="nav-text">十二、Date&#x2F;DateFormat类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-9"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-7"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-10"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81DateFormat-SimpleDateFormat%E7%B1%BB"><span class="nav-text">十三、DateFormat&#x2F;SimpleDateFormat类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-10"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95-8"><span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-11"><span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81Calendar%E7%B1%BB"><span class="nav-text">十四、Calendar类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-11"><span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E"><span class="nav-text">使用说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95-12"><span class="nav-text">常用方法</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Rain_ncy"
+      src="/images/mytouxiang.jpg">
+  <p class="site-author-name" itemprop="name">Rain_ncy</p>
+  <div class="site-description" itemprop="description">分享技术，记录生活</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/nnccy" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;nnccy" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ncyrain1205@gmail.com" title="E-Mail → mailto:ncyrain1205@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_39209397" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_39209397" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Rain_ncy</span>
+</div>
+    <!-- 网站运行时间的设置 -->
+    <span id="timeDate">载入天数...</span>
+    <span id="times">载入时分秒...</span>  
+    <script>
+        var now = new Date();
+        function createtime() {
+            var grt= new Date("09/03/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+            now.setTime(now.getTime()+250);
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+    setInterval("createtime()",250);
+    </script>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottom + Left";
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script>
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : 'EGebjGy3Y7vrPAyHdtY2bYdG-gzGzoHsz',
+      appKey     : '0WWztSryAzbSNJeFqcay0A4y',
+      placeholder: "建议在上方留下昵称和邮箱等信息,以便收到回复和通知",
+      avatar     : 'mp',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
